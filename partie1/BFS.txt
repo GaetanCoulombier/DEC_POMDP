@@ -1,0 +1,29 @@
+./src/examples/example_BFS GridSmall -v
+
+BruteForceSearchPlanner initialized
+Jpol # 2000 of 15625 - 12.8%
+Jpol # 3000 of 15625 - 19.2%
+Jpol # 4000 of 15625 - 25.6%
+Jpol # 5000 of 15625 - 32%
+Jpol # 6000 of 15625 - 38.4%
+Jpol # 7000 of 15625 - 44.8%
+Jpol # 8000 of 15625 - 51.2%
+Jpol # 9000 of 15625 - 57.6%
+Jpol # 10000 of 15625 - 64%
+Jpol # 11000 of 15625 - 70.4%
+Jpol # 12000 of 15625 - 76.8%
+Jpol # 13000 of 15625 - 83.2%
+Jpol # 14000 of 15625 - 89.6%
+Jpol # 15000 of 15625 - 96%
+
+value=0.37
+JointPolicyPureVector: 
+JPolComponent_VectorImplementation index 0
+Policy for agent 0 (index 0):
+Oempty,  --> up
+Oempty, nnnnnynnn,  --> up
+Oempty, nnnynnnnn,  --> up
+Policy for agent 1 (index 0):
+Oempty,  --> up
+Oempty, nnnnnynnn,  --> up
+Oempty, nnnynnnnn,  --> up

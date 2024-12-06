@@ -1,0 +1,19 @@
+./src/examples/example_JESP GridSmall -v
+
+JESPDynamicProgrammingPlanner initialized
+JESP Planner initialized
+value=0.7156
+JointPolicyPureVector: 
+JPolComponent_VectorImplementation index 4097
+Policy for agent 0 (index 32):
+Oempty,  --> down
+Oempty, nnnnnynnn,  --> down
+Oempty, nnnynnnnn,  --> left
+Policy for agent 1 (index 97):
+Oempty,  --> right
+Oempty, nnnnnynnn,  --> stay
+Oempty, nnnynnnnn,  --> left
+
+Overall: 0.08 s in 1 measurements, max 0.08, avg 0.08, min 0.08
+Plan: 0 s in 1 measurements, max 0, avg 0, min 0
+PlanningUnit: 0 s in 1 measurements, max 0, avg 0, min 0
