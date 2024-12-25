@@ -1,19 +1,22 @@
-./src/examples/example_JESP GridSmall -v
-
+./src/solvers/JESP GridSmall -v
+ArgumentUtils: Problem file /home/nathan/.madp/problems/GridSmall.dpomdp parsed
+ArgumentUtils: Problem GridSmall instantiated.
+JESP: could not open /home/nathan/.madp/results/JESP/GridSmall/JESP_GridSmall_JESPDP_h2_JESPrestarts1
+Results will not be stored to disk.
 JESPDynamicProgrammingPlanner initialized
 JESP Planner initialized
-value=0.7156
+value=0.91
 JointPolicyPureVector: 
-JPolComponent_VectorImplementation index 4097
-Policy for agent 0 (index 32):
+JPolComponent_VectorImplementation index 3969
+Policy for agent 0 (index 31):
 Oempty,  --> down
 Oempty, nnnnnynnn,  --> down
-Oempty, nnnynnnnn,  --> left
-Policy for agent 1 (index 97):
+Oempty, nnnynnnnn,  --> down
+Policy for agent 1 (index 94):
 Oempty,  --> right
-Oempty, nnnnnynnn,  --> stay
-Oempty, nnnynnnnn,  --> left
+Oempty, nnnnnynnn,  --> right
+Oempty, nnnynnnnn,  --> stay
 
-Overall: 0.08 s in 1 measurements, max 0.08, avg 0.08, min 0.08
+Overall: 0.12 s in 1 measurements, max 0.12, avg 0.12, min 0.12
 Plan: 0 s in 1 measurements, max 0, avg 0, min 0
 PlanningUnit: 0 s in 1 measurements, max 0, avg 0, min 0
