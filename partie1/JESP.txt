@@ -1,4 +1,5 @@
 ./src/solvers/JESP GridSmall -v
+
 ArgumentUtils: Problem file /home/nathan/.madp/problems/GridSmall.dpomdp parsed
 ArgumentUtils: Problem GridSmall instantiated.
 JESP: could not open /home/nathan/.madp/results/JESP/GridSmall/JESP_GridSmall_JESPDP_h2_JESPrestarts1
