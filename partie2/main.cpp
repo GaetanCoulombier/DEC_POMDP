@@ -21,7 +21,7 @@
 #include <fstream>
 #include <float.h>
 #include "MADPParser.h"
-#include "JESPExhaustivePlanner.h"
+#include "JESPForGridSmall.h"
 #include "JESPDynamicProgrammingPlanner.h"
 #include "directories.h"
 #include "DecPOMDPDiscrete.h"
@@ -128,16 +128,10 @@ int main(int argc, char **argv)
     else
         params.SetUseSparseJointBeliefs(false);
     PlanningUnitDecPOMDPDiscrete* jesp = 0;
-    if(args.jesp == JESPtype::JESPExhaustive)
-    {
-        jesp = new JESPExhaustivePlanner (horizon, &decpomdp, &params);
-        cout << "JESPExhaustivePlanner initialized" << endl;
-    }
-    else if(args.jesp == JESPtype::JESPDP)
-    {
-        jesp = new JESPDynamicProgrammingPlanner (horizon, &decpomdp, &params);
-        cout << "JESPDynamicProgrammingPlanner initialized" << endl;
-    }
+
+    jesp = new JESPForGridSmall (horizon, &decpomdp, &params);
+    cout << "JESPForGridSmall initialized" << endl;
+    
     Time.Stop("PlanningUnit");
     cout << "JESP Planner initialized" << endl;
 
@@ -149,15 +143,13 @@ int main(int argc, char **argv)
         clock_t ticks_before, ticks_after;
         ticks_before = times(&ts_before);
 
-        jesp->Plan();
+        jesp->Plan(); // TODO
         double V = jesp->GetExpectedReward();
         if(args.verbose >= 0)
         {
-            cout << "value="<< V << endl;
-            if(args.verbose)        {
+            cout << "Expected Reward ="<< V << endl;
             jesp->GetJointPolicyPureVector()->Print();
             cout <<  endl;
-            }
         }
 
         //stop all timers
@@ -166,16 +158,6 @@ int main(int argc, char **argv)
         clock_t utime =   ts_after.tms_utime - ts_before.tms_utime;
         Time.Stop("Plan");
 
-#if CHECK_RESULT
-        ValueFunctionDecPOMDPDiscrete vf(jesp, jesp->GetJointPolicyPureVector());
-        double v = vf.CalculateV(true);
-        cout << "Validated value (exact/approx):="<<v;
-        SimulationDecPOMDPDiscrete sim(*jesp, 1000);
-        SimulationResult simres = 
-            sim.RunSimulations( jesp->GetJointPolicyPureVector() );
-        v = simres.GetAvgReward();
-        cout << " / "<<v <<endl;
-#endif
         if(!args.dryrun)
         {
             of << horizon<<"\t";

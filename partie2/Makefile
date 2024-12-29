@@ -10,10 +10,10 @@ CXXFLAGS = -I/usr/local/include/madp
 LDFLAGS = -L/usr/local/lib -lMADP -lxml2 -lm
 
 # Target executable
-TARGET = jesp_example
+TARGET = main
 
 # Source files
-SRCS = prog.cpp
+SRCS = main.cpp JESPForGridSmall.cpp
 
 # Default target
 all: $(TARGET)
