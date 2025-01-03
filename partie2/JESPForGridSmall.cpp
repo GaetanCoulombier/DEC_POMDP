@@ -9,6 +9,8 @@
  *
  * Frans Oliehoek 
  * Matthijs Spaan 
+ * Nathan FRANCLET
+ * Gaëtan COULOMBIER
  *
  * For contact information please see the included AUTHORS file.
  */
@@ -36,49 +38,56 @@ JESPForGridSmall::JESPForGridSmall(
     //,_m_exhBRBestPol(*this)
 {
 }
-
-void JESPForGridSmall::Plan()
-{
-    if(DEBUG_DPJESP){ 
-        cout << "\n---------------------------------"<<endl;
-        cout << "Exhaustive JESP  - Plan() started"<<endl;
-        cout << "---------------------------------"<<endl;
+void JESPForGridSmall::Plan() {
+    if (DEBUG_DPJESP) { 
+        cout << "\n---------------------------------" << endl;
+        cout << "Exhaustive JESP  - Plan() started" << endl;
+        cout << "---------------------------------" << endl;
     }
+    
     double v_best = -DBL_MAX;
     JointPolicyPureVector* jpol = new JointPolicyPureVector(this);
     JointPolicyPureVector* best = new JointPolicyPureVector(this);
     jpol->RandomInitialization();
-    //jpol->ZeroInitialization();
-    
-    if(DEBUG_DPJESP) {cout << "joint policy randomly initialized to:";
-        jpol->Print();}
-    
-    
+
+    // Fixer la politique de l'agent 1
+    Index agent1 = 1; // Identifiant de l'agent 1
+    Index stay_action = 4; // Action "stay" de l'agent 1
+    size_t nr_obs_histories = GetDPOMDPD()->GetNrObservations(agent1);
+    for (Index aohI = 0; aohI <= nr_obs_histories; ++aohI) {
+        jpol->SetAction(agent1, aohI, stay_action); // Fixer l'action de l'agent 1
+    }
+
+    cout << "joint policy initialized with agent 1 fixed to 'stay':" << endl;
+    jpol->Print();
+
     int stop = 0;
     size_t nr_non_improving_agents = 0;
-    while(nr_non_improving_agents < GetDPOMDPD()->GetNrAgents() -1
-            && stop++ < 1000) 
-    {
+    while (nr_non_improving_agents < GetDPOMDPD()->GetNrAgents() - 1
+           && stop++ < 1000) {
         int agentI = GetNextAgentIndex();
+        if (agentI == 1) continue; // Sauter l'agent 1 car sa politique est fixe
+
         double v = DynamicProgrammingBestResponse(jpol, agentI);
-        if(v > v_best + 1e-9)
-        {  
+        if (v > v_best + 1e-9) {  
             (*best) = (*jpol);
-            if(DEBUG_DPJESP)
-                {cout << ">>>Plan: new best policy:"<<endl; best->Print();}
+            if (DEBUG_DPJESP) {
+                cout << ">>>Plan: new best policy:" << endl;
+                best->Print();
+            }
             v_best = v;
             nr_non_improving_agents = 0;
-        }        
-        else
+        } else {
             nr_non_improving_agents++;
+        }
     }
-    _m_foundPolicy = JPPV_sharedPtr(best);
-    _m_expectedRewardFoundPolicy=v_best;
-    
 
-    if(DEBUG_DPJESP){ 
-        cout << "Exhaustive JESP  - resulting policy:"<<endl;
-        cout << "------------------------------------"<<endl;
+    _m_foundPolicy = JPPV_sharedPtr(best);
+    _m_expectedRewardFoundPolicy = v_best;
+
+    if (DEBUG_DPJESP) { 
+        cout << "Exhaustive JESP  - resulting policy:" << endl;
+        cout << "------------------------------------" << endl;
         best->Print();
     }
     delete jpol;
