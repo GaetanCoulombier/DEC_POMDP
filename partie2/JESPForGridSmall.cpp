@@ -71,10 +71,8 @@ void JESPForGridSmall::Plan() {
         double v = DynamicProgrammingBestResponse(jpol, agentI);
         if (v > v_best + 1e-9) {  
             (*best) = (*jpol);
-            if (DEBUG_DPJESP) {
-                cout << ">>>Plan: new best policy:" << endl;
-                best->Print();
-            }
+            cout << ">>>Plan: new best policy:" << endl;
+            best->Print();
             v_best = v;
             nr_non_improving_agents = 0;
         } else {
