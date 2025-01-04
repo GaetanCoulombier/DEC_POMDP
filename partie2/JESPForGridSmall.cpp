@@ -63,8 +63,7 @@ void JESPForGridSmall::Plan() {
 
     int stop = 0;
     size_t nr_non_improving_agents = 0;
-    while (nr_non_improving_agents < GetDPOMDPD()->GetNrAgents() - 1
-           && stop++ < 1000) {
+    while (nr_non_improving_agents < GetDPOMDPD()->GetNrAgents()-1 && stop++ < 1000) {
         int agentI = GetNextAgentIndex();
         if (agentI == 1) continue; // Sauter l'agent 1 car sa politique est fixe
 
