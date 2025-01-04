@@ -1,4 +1,4 @@
-# Makefile for compiling jesp_example
+# Makefile for compiling main.cpp and JESPForGridSmall.cpp
 
 # Compiler
 CXX = g++
