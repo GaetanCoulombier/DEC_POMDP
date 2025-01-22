@@ -53,7 +53,7 @@ void JESPForGridSmall::Plan() {
     // Fixer la politique de l'agent 1
     Index agent1 = 1; // Identifiant de l'agent 1
     Index stay_action = 4; // Action "stay" de l'agent 1
-    size_t nr_obs_histories = GetDPOMDPD()->GetNrObservations(agent1);
+    size_t nr_obs_histories = pow(GetDPOMDPD()->GetNrObservations(agent1), GetHorizon())-2;
     for (Index aohI = 0; aohI <= nr_obs_histories; ++aohI) {
         jpol->SetAction(agent1, aohI, stay_action); // Fixer l'action de l'agent 1
     }
