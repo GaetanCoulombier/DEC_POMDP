@@ -8,9 +8,7 @@
  * This file has been written and/or modified by the following people:
  *
  * Frans Oliehoek 
- * Matthijs Spaan 
- * Nathan FRANCLET
- * Gaëtan COULOMBIER
+ * Matthijs Spaan
  *
  * For contact information please see the included AUTHORS file.
  */
