@@ -2,6 +2,7 @@
 madp-*
 main
 .vscode
+.venv
 # Prerequisites
 *.d
 
