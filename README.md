@@ -25,7 +25,7 @@ Comparaison :
 
     Dans un MDP, l'objectif explicite peut être d'amener l'agent 0 à atteindre la position de l'agent 1, ce qui peut inclure une logique de minimisation de distance. En revanche, avec BEST_RESPONSE, l'agent 0 agit uniquement en fonction de la politique de l'agent 1 et son propre gain, ce qui peut produire des comportements différents si les récompenses sont définies différemment.
 
-3. Conditions pour lesquelles les deux politiques (MDP et BEST_RESPONSE) sont identiques :
+### 3. Conditions pour lesquelles les deux politiques (MDP et BEST_RESPONSE) sont identiques :
 
 Les deux politiques seront identiques si :
 
@@ -33,7 +33,7 @@ Les deux politiques seront identiques si :
     Objectif aligné : L'agent 0 a pour unique objectif d'atteindre la position de l'agent 1 dans les deux approches.
     Pas de contraintes conflictuelles : Aucune contrainte supplémentaire (par exemple, éviter certaines positions) ne limite le comportement dans l'une ou l'autre approche.
 
-4. Modification du modèle pour empêcher les rencontres entre agents :
+### 4. Modification du modèle pour empêcher les rencontres entre agents :
 
 Pour garantir que les deux agents ne se rencontrent pas, on peut modifier le modèle de la manière suivante :
 
@@ -44,3 +44,20 @@ Pour garantir que les deux agents ne se rencontrent pas, on peut modifier le mod
     Ajout de contraintes dans l'espace d'action : Restreindre les actions possibles de chaque agent pour empêcher un mouvement conduisant à une rencontre.
 
     Nouveau benchmark : Relancer les algorithmes exhaustifs et JESP avec ce modèle modifié.
+
+## Partie 3
+
+- **src** : Dossier contenant les fichiers sources de l'algorithme Best Response avec comme base l'algorithme JESP version dynamique de MADP.
+- **bin** : Dossier contenant le fichier binaire de l'algorithme Best Response.
+- **Makefile** : Fichier pour générer le binaire avec la commande `make`
+- **grid_large.dpomdp** : Fichier du problème GridSmall
+
+### 1.
+
+Lancer le script python pour générer le fichier `grid_large.dpomdp` : `python3 generate_grid_large.py`
+
+### 2.
+**JESP.txt** : Commande et trace d'exécution de l'algorithme JESP sur le problème précédemment généré.
+
+### 3.
+Lancer l'algorithme Best Response sur le problème `grid_large.dpomdp` : `./bin/best_response grid_large.dpomdp`
