@@ -58,6 +58,3 @@ Lancer le script python pour générer le fichier `grid_large.dpomdp` : `python3
 
 ### 2.
 **JESP.txt** : Commande et trace d'exécution de l'algorithme JESP sur le problème précédemment généré.
-
-### 3.
-Lancer l'algorithme Best Response sur le problème `grid_large.dpomdp` : `./bin/best_response grid_large.dpomdp`
