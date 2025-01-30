@@ -1,0 +1,26 @@
+../madp-0.4.1/src/solvers/JESP ./grid_large.dpomdp -v
+
+ERROR: MultiAgentDecisionProcessDiscrete::SanityCheck failed: transition does not sum to 1 but to:
+1.0200000000
+ for (s,a)==(undefined[21],JA0_UP_UP[0])
+ArgumentUtils: Problem file ./grid_large.dpomdp parsed
+ArgumentUtils: Problem grid_large instantiated.
+JESP: could not open /home/gaetan/.madp/results/JESP/grid_large/JESP_grid_large_JESPDP_h2_JESPrestarts1
+Results will not be stored to disk.
+JESPDynamicProgrammingPlanner initialized
+JESP Planner initialized
+value=0
+JointPolicyPureVector: 
+JPolComponent_VectorImplementation index 104
+Policy for agent 0 (index 0):
+Oempty,  --> UP
+Oempty, murDG,  --> UP
+Oempty, murHB,  --> UP
+Policy for agent 1 (index 104):
+Oempty,  --> STAY
+Oempty, murDG,  --> UP
+Oempty, murHB,  --> STAY
+
+Overall: 0.65 s in 1 measurements, max 0.65, avg 0.65, min 0.65
+Plan: 0.01 s in 1 measurements, max 0.01, avg 0.01, min 0.01
+PlanningUnit: 0 s in 1 measurements, max 0, avg 0, min 0
